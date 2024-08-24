@@ -1,4 +1,9 @@
+// LOGO
 .wrapper {
+  --search-border-radius: 92px;
+  --search-height: 46px;
+  --search-top-spacer: 10px;
+
   width: 100%;
   height: var(--default-layout-header-height, 60px);
   box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
@@ -7,7 +12,97 @@
 }
 
 .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 100%;
   width: var(--default-layout-width);
-  background-color: #ccc;
+}
+
+.logo {
+  padding: 10px 15px;
+}
+
+// SEARCH BAR
+.search {
+  position: relative;
+  padding-left: 16px;
+  display: flex;
+  width: 500px;
+  height: var(--search-height);
+  background: rgb(22 24 35 / 6%);
+  border-radius: var(--search-border-radius);
+  border: 1px solid none;
+
+  input {
+    flex: 1;
+    height: 100%;
+    color: var(--black);
+    font-size: 16px;
+    background-color: transparent;
+    caret-color: var(--primary);
+  }
+
+  &:hover {
+    border: 1px solid #a7a7ab;
+
+    .search-btn {
+      background-color: rgba(22, 24, 35, 0.03);
+      color: var(--black);
+    }
+  }
+
+  &::after {
+    content: "";
+    position: relative;
+    width: 1px;
+    height: calc(var(--search-height) - var(--search-top-spacer) * 2);
+    top: var(--search-top-spacer);
+    right: 54px;
+    background-color: rgba(22, 24, 35, 0.12);
+  }
+}
+
+.clear,
+.loading {
+  position: absolute;
+  padding: 10px 10px;
+  top: 1%;
+  right: 65px;
+  color: #a7a7ab;
+}
+
+.search-btn {
+  width: 52px;
+  height: 46px;
+  background-color: transparent;
+  padding: 11px 16px 11px 12px;
+  cursor: pointer;
+  font-size: 22px;
+  color: #a7a7ab;
+  border-top-right-radius: var(--search-border-radius);
+  border-bottom-right-radius: var(--search-border-radius);
+}
+
+// ACTION RIGHT
+.action {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 10px 40px;
+}
+.signin-btn {
+  width: 100px;
+  height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),
+      rgb(254, 44, 85);
+  }
 }
