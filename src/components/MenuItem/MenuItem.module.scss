@@ -1,0 +1,24 @@
+.wrapper {
+  min-width: 223px;
+  padding: 8px 0px;
+}
+
+.list-items {
+  list-style: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: rgb(22, 24, 35);
+  padding: 10px 8px 10px 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f8f8f8;
+  }
+}

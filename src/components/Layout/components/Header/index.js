@@ -1,5 +1,11 @@
 import classNames from "classnames/bind";
+import Tippy from "@tippyjs/react/headless";
+import TippyMenu from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
+import { useEffect, useState } from "react";
+
 import styles from "./Header.module.scss";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
@@ -7,10 +13,22 @@ import {
   faMagnifyingGlass,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
+import { Wrapper as PopperWrapper } from "@/components/Popper";
+import AccountItem from "@/components/AccountItem";
+import Button from "@/components/Button";
+import MenuItem from "@/components/MenuItem";
 
 const cx = classNames.bind(styles);
 
 function Header() {
+  const [searchResult, setSearchResult] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSearchResult([1, 2, 3]);
+    }, 0);
+  }, []);
+
   return (
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
@@ -56,27 +74,68 @@ function Header() {
             ></path>
           </svg>
         </div>
-        <div className={cx("search")}>
-          <input placeholder="Tìm kiếm" spellCheck="false" />
 
-          {/* <div className={cx("clear")}>
+        <Tippy
+          visible={searchResult.length > 0}
+          interactive
+          render={(attrs) => (
+            <div className={cx("search-result")} tabIndex="-1" {...attrs}>
+              <PopperWrapper>
+                <h4 className={cx("search-title")}>Tài khoản</h4>
+
+                <ul className={cx("list-accounts")}>
+                  <li className={cx("acount")}>
+                    <AccountItem />
+                  </li>
+                  <li className={cx("acount")}>
+                    <AccountItem />
+                  </li>
+                  <li className={cx("acount")}>
+                    <AccountItem />
+                  </li>
+                  <li className={cx("acount")}>
+                    <AccountItem />
+                  </li>
+                  <li className={cx("acount")}>
+                    <AccountItem />
+                  </li>
+                </ul>
+              </PopperWrapper>
+            </div>
+          )}
+        >
+          <div className={cx("search")}>
+            <input placeholder="Tìm kiếm" spellCheck="false" />
+
+            {/* <div className={cx("clear")}>
             <FontAwesomeIcon icon={faCircleXmark} />
           </div> */}
 
-          <div className={cx("loading")}>
-            <FontAwesomeIcon icon={faSpinner} />
-          </div>
+            <div className={cx("loading")}>
+              <FontAwesomeIcon icon={faSpinner} />
+            </div>
 
-          <button className={cx("search-btn")}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-        </div>
+            <button className={cx("search-btn")}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+          </div>
+        </Tippy>
 
         <div className={cx("action")}>
-          <button className={cx("signin-btn")}>Đăng nhập</button>
-          <i className={cx("menu-vertical")}>
-            <FontAwesomeIcon icon={faEllipsisVertical} />
-          </i>
+          <Button primary small onClick={() => {}}>
+            Đăng nhập
+          </Button>
+          <TippyMenu
+            className={cx("tippy-tooltip")}
+            content={<MenuItem />}
+            placement="top"
+            interactive
+            delay={[100, 200]}
+          >
+            <i className={cx("menu-vertical")}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </i>
+          </TippyMenu>
         </div>
       </div>
     </header>

@@ -24,11 +24,16 @@
 }
 
 // SEARCH BAR
+
+.search,
+.search-result {
+  width: 500px;
+}
+
 .search {
   position: relative;
   padding-left: 16px;
   display: flex;
-  width: 500px;
   height: var(--search-height);
   background: rgb(22 24 35 / 6%);
   border-radius: var(--search-border-radius);
@@ -91,18 +96,37 @@
   gap: 3rem;
   padding: 10px 40px;
 }
-.signin-btn {
-  width: 100px;
-  height: 36px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: var(--primary);
-  color: white;
-  border-radius: 4px;
+
+// TIPPY SEARCH
+.search-title {
+  padding: 9px 16px;
+  height: 30px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: rgba(22, 24, 35, 0.5);
+}
+
+.list-accounts {
+  list-style-type: none;
+}
+
+.acount {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),
-      rgb(254, 44, 85);
+    background-color: #f8f8f8;
   }
+}
+
+.menu-vertical {
+  cursor: pointer;
+}
+
+// TIPPY MENU
+.tippy-tooltip {
+  background-color: rgb(255, 255, 255);
+  color: var(--black);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
 }
